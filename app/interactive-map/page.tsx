@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <main className={styles.main}>
       <div className={styles.nav}>
-        Educational Nuclear Plant / clickear en "residuos"
+        Educational Nuclear Plant / clickear en tag residuos
       </div>
 
       <div className={styles.canvasContainer}>
