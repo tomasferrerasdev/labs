@@ -1,22 +1,41 @@
-"use client";
+'use client';
 import {
   ContactShadows,
   Environment,
-  Lightformer,
+  Grid,
   OrbitControls,
-} from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { Nissan } from "./Nissan";
-import { Perf } from "r3f-perf";
-import { useControls } from "leva";
-import { Effects } from "./Effects";
+  PerformanceMonitor,
+} from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { useControls } from 'leva';
+import { Suspense, useMemo, useState } from 'react';
+import { Effects } from './Effects';
+import { Nissan } from './Nissan';
+import { Screen } from './Screen';
 
 export const CarShow = () => {
+  const [degraded, degrade] = useState(false);
   const { chasisColor, rimsColor } = useControls({
-    chasisColor: "#b73030",
-    rimsColor: "#000",
+    chasisColor: '#b73030',
+    rimsColor: '#000',
   });
+
+  const options = useMemo(() => {
+    return {
+      x: { value: 4.7, min: 0, max: Math.PI * 2, step: 0.01 },
+      y: { value: 0, min: 0, max: Math.PI * 2, step: 0.01 },
+      z: { value: 0, min: -10, max: Math.PI * 2, step: 0.01 },
+      posX: { value: 0.0, min: -15, max: 15, step: 0.01 },
+      posY: { value: 0.56, min: -15, max: 15, step: 0.01 },
+      posZ: { value: 15.0, min: -15, max: 15, step: 0.01 },
+      scaleX: { value: 2.88, min: 0, max: Math.PI * 2, step: 0.01 },
+      scaleY: { value: 1.89, min: 0, max: Math.PI * 2, step: 0.01 },
+      scaleZ: { value: 1.3, min: 0, max: Math.PI * 2, step: 0.01 },
+      visible: true,
+    };
+  }, []);
+
+  const screen = useControls('Screen', options);
 
   return (
     <Suspense fallback={null}>
@@ -24,6 +43,7 @@ export const CarShow = () => {
         gl={{ logarithmicDepthBuffer: true, antialias: false }}
         dpr={[1, 1.5]}
         camera={{ position: [0, 0, 15], fov: 25 }}
+        shadows
       >
         <ContactShadows
           resolution={1024}
@@ -35,102 +55,29 @@ export const CarShow = () => {
           far={20}
         />
         <Nissan rimsColor={rimsColor} chasisColor={chasisColor} />
-        <color attach="background" args={["#fff"]} />
-        <hemisphereLight intensity={0.5} />
-
-        <mesh
-          scale={4}
-          position={[3, -1.161, -1.5]}
-          rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}
-        >
-          <ringGeometry args={[0.9, 1, 4, 1]} />
-          <meshStandardMaterial color="white" roughness={0.75} />
-        </mesh>
-        <mesh
-          scale={4}
-          position={[-3, -1.161, -1]}
-          rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}
-        >
-          <ringGeometry args={[0.9, 1, 3, 1]} />
-          <meshStandardMaterial color="white" roughness={0.75} />
-        </mesh>
-        <Environment resolution={512}>
-          <Lightformer
-            intensity={3}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, -9]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={4}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, -6]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={2}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, -3]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={2}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, 0]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={2}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, 3]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={2}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, 6]}
-            scale={[10, 1, 1]}
-          />
-          <Lightformer
-            intensity={2}
-            rotation-x={Math.PI / 2}
-            position={[0, 4, 9]}
-            scale={[10, 1, 1]}
-          />
-          {/* Sides */}
-          <Lightformer
-            intensity={4}
-            rotation-y={Math.PI / 2}
-            position={[-50, 2, 0]}
-            scale={[100, 2, 1]}
-          />
-          <Lightformer
-            intensity={9}
-            rotation-y={-Math.PI / 2}
-            position={[50, 4, 0]}
-            scale={[100, 2, 1]}
-          />
-          {/* Key */}
-          <Lightformer
-            form="ring"
-            color="red"
-            intensity={10}
-            scale={2}
-            position={[10, 5, 10]}
-            onUpdate={(self) => self.lookAt(0, 0, 0)}
-          />
-        </Environment>
-
-        <OrbitControls
-          enableZoom={true}
-          enablePan={false}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 2.25}
-          makeDefault
-          autoRotate
+        <Screen
+          position={[screen.posX, screen.posY, screen.posZ]}
+          rotation={[screen.x, screen.y, screen.z]}
+          visible={screen.visible}
+          scale={[screen.scaleX, screen.scaleY, screen.scaleZ]}
         />
+        <color attach="background" args={['#fff']} />
+        <hemisphereLight intensity={0.5} />
+        <Environment background preset="sunset" blur={0.8} />
+        <OrbitControls />
+        <PerformanceMonitor onDecline={() => degrade(true)} />
         <Effects />
-        {/* <Perf position="bottom-right" /> */}
+        <Grid
+          renderOrder={-1}
+          position={[0, -1.2, 0]}
+          infiniteGrid
+          cellSize={0.6}
+          cellThickness={0.6}
+          sectionSize={3.3}
+          sectionThickness={1.5}
+          sectionColor={'#E0C5FF'}
+          fadeDistance={30}
+        />
       </Canvas>
     </Suspense>
   );

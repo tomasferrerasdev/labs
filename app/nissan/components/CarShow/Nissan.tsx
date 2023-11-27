@@ -1,196 +1,195 @@
-import { useGLTF } from "@react-three/drei";
+import { useGLTF } from '@react-three/drei';
 
 export const Nissan = ({ chasisColor, rimsColor }: any) => {
-  const { nodes, materials }: any = useGLTF("/models/nissan.glb");
+  const { nodes, materials }: any = useGLTF('/models/nissan-car.glb');
 
   return (
     <group dispose={null}>
       <group
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[-4.4, -2.64, -3]}
-        scale={3}
+        scale={2.2}
+        position={[-3.2, -2.3, 0]}
       >
         <mesh
-          geometry={nodes.chasis.geometry}
-          material={materials["Material.001"]}
-          material-color={chasisColor}
-        />
-        <mesh
-          geometry={nodes.front_left_wheel.geometry}
-          material={materials["Material.011"]}
-        />
-        <mesh
-          geometry={nodes.front_right_wheel.geometry}
-          material={materials["Material.011"]}
-        />
-        <mesh
-          geometry={nodes.Object_10.geometry}
-          material={materials["Material.026"]}
-        />
-        <mesh
-          geometry={nodes.Object_11.geometry}
-          material={materials["Material.028"]}
-        />
-        <mesh
-          geometry={nodes.Object_12.geometry}
-          material={materials["Material.039"]}
-        />
-        <mesh
-          geometry={nodes.Object_13.geometry}
-          material={materials["Material.046"]}
-        />
-        <mesh
-          geometry={nodes.Object_14.geometry}
-          material={materials["Material.048"]}
-        />
-        <mesh
-          geometry={nodes.Object_15.geometry}
-          material={materials["plate_d-dds"]}
-        />
-        <mesh
-          geometry={nodes.Object_16.geometry}
-          material={materials["Material.001"]}
-        />
-        <mesh
-          geometry={nodes.Object_18.geometry}
-          material={materials["Material.003"]}
-        />
-        <mesh
-          geometry={nodes.Object_19.geometry}
-          material={materials["Material.004"]}
-        />
-        <mesh
           geometry={nodes.Object_2.geometry}
-          material={materials["Material.002"]}
-        />
-        <mesh
-          geometry={nodes.Object_20.geometry}
-          material={materials["Material.004"]}
-        />
-        <mesh
-          geometry={nodes.Object_21.geometry}
-          material={materials["Material.006"]}
-        />
-        <mesh
-          geometry={nodes.Object_22.geometry}
-          material={materials["Material.007"]}
-        />
-        <mesh
-          geometry={nodes.Object_28.geometry}
-          material={materials["Material.016"]}
-        />
-        <mesh
-          geometry={nodes.Object_29.geometry}
-          material={materials["Material.018"]}
+          material={materials['Material.002']}
         />
         <mesh
           geometry={nodes.Object_3.geometry}
-          material={materials["Material.009"]}
-        />
-        <mesh
-          geometry={nodes.Object_30.geometry}
-          material={materials["Material.023"]}
-        />
-        <mesh
-          geometry={nodes.Object_31.geometry}
-          material={materials["Material.023"]}
-        />
-        <mesh
-          geometry={nodes.Object_32.geometry}
-          material={materials["Material.023"]}
-        />
-        <mesh
-          geometry={nodes.Object_33.geometry}
-          material={materials["Material.023"]}
-        />
-        <mesh
-          geometry={nodes.Object_34.geometry}
-          material={materials["Material.021"]}
-        />
-        <mesh
-          geometry={nodes.Object_35.geometry}
-          material={materials["Material.021"]}
-        />
-        <mesh
-          geometry={nodes.Object_36.geometry}
-          material={materials["Material.025"]}
-        />
-        <mesh
-          geometry={nodes.Object_37.geometry}
-          material={materials["Material.035"]}
-        />
-        <mesh
-          geometry={nodes.Object_38.geometry}
-          material={materials["Material.035"]}
-        />
-        <mesh
-          geometry={nodes.Object_39.geometry}
-          material={materials["Material.029"]}
+          material={materials['Material.009']}
         />
         <mesh
           geometry={nodes.Object_4.geometry}
-          material={materials["Material.012"]}
-        />
-        <mesh
-          geometry={nodes.Object_40.geometry}
-          material={materials["Material.024"]}
-        />
-        <mesh
-          geometry={nodes.Object_41.geometry}
-          material={materials["Material.037"]}
-        />
-        <mesh
-          geometry={nodes.Object_42.geometry}
-          material={materials["Material.043"]}
-        />
-        <mesh
-          geometry={nodes.Object_43.geometry}
-          material={materials["Material.043"]}
-        />
-        <mesh
-          geometry={nodes.Object_44.geometry}
-          material={materials["Material.042"]}
-        />
-        <mesh
-          geometry={nodes.Object_45.geometry}
-          material={materials["Material.044"]}
+          material={materials['Material.012']}
         />
         <mesh
           geometry={nodes.Object_5.geometry}
-          material={materials["Material.017"]}
+          material={materials['Material.017']}
         />
         <mesh
           geometry={nodes.Object_6.geometry}
-          material={materials["Material.019"]}
+          material={materials['Material.019']}
         />
         <mesh
           geometry={nodes.Object_7.geometry}
-          material={materials["Material.013"]}
+          material={materials['Material.013']}
         />
         <mesh
           geometry={nodes.Object_8.geometry}
-          material={materials["Material.034"]}
+          material={materials['Material.034']}
         />
         <mesh
           geometry={nodes.Object_9.geometry}
-          material={materials["Material.030"]}
+          material={materials['Material.030']}
         />
         <mesh
-          geometry={nodes.rear_left_wheel.geometry}
-          material={materials["Material.011"]}
+          geometry={nodes.Object_10.geometry}
+          material={materials['Material.026']}
         />
         <mesh
-          geometry={nodes.rear_right_wheel.geometry}
-          material={materials["Material.011"]}
+          geometry={nodes.Object_11.geometry}
+          material={materials['Material.028']}
         />
         <mesh
-          geometry={nodes.rims.geometry}
-          material={materials["Material.005"]}
-          material-color={rimsColor}
+          geometry={nodes.Object_12.geometry}
+          material={materials['Material.039']}
+        />
+        <mesh
+          geometry={nodes.Object_13.geometry}
+          material={materials['Material.046']}
+        />
+        <mesh
+          geometry={nodes.Object_14.geometry}
+          material={materials['Material.048']}
+        />
+        <mesh
+          geometry={nodes.Object_15.geometry}
+          material={materials['plate_d-dds']}
+        />
+        <mesh
+          geometry={nodes.Object_16.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          geometry={nodes.Object_17.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          geometry={nodes.Object_18.geometry}
+          material={materials.Material}
+        />
+        <mesh
+          geometry={nodes.Object_19.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          geometry={nodes.Object_20.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          geometry={nodes.Object_21.geometry}
+          material={materials['Material.006']}
+        />
+        <mesh
+          geometry={nodes.Object_22.geometry}
+          material={materials['Material.007']}
+        />
+        <mesh
+          geometry={nodes.Object_23.geometry}
+          material={materials['Material.005']}
+        />
+        <mesh
+          geometry={nodes.Object_24.geometry}
+          material={materials['Material.011']}
+        />
+        <mesh
+          geometry={nodes.Object_25.geometry}
+          material={materials['Material.011']}
+        />
+        <mesh
+          geometry={nodes.Object_26.geometry}
+          material={materials['Material.011']}
+        />
+        <mesh
+          geometry={nodes.Object_27.geometry}
+          material={materials['Material.011']}
+        />
+        <mesh
+          geometry={nodes.Object_28.geometry}
+          material={materials['Material.016']}
+        />
+        <mesh
+          geometry={nodes.Object_29.geometry}
+          material={materials['Material.018']}
+        />
+        <mesh
+          geometry={nodes.Object_30.geometry}
+          material={materials['Material.023']}
+        />
+        <mesh
+          geometry={nodes.Object_31.geometry}
+          material={materials['Material.023']}
+        />
+        <mesh
+          geometry={nodes.Object_32.geometry}
+          material={materials['Material.023']}
+        />
+        <mesh
+          geometry={nodes.Object_33.geometry}
+          material={materials['Material.023']}
+        />
+        <mesh
+          geometry={nodes.Object_34.geometry}
+          material={materials['Material.021']}
+        />
+        <mesh
+          geometry={nodes.Object_35.geometry}
+          material={materials['Material.021']}
+        />
+        <mesh
+          geometry={nodes.Object_36.geometry}
+          material={materials['Material.025']}
+        />
+        <mesh
+          geometry={nodes.Object_37.geometry}
+          material={materials['Material.035']}
+        />
+        <mesh
+          geometry={nodes.Object_38.geometry}
+          material={materials['Material.035']}
+        />
+        <mesh
+          geometry={nodes.Object_39.geometry}
+          material={materials['Material.029']}
+        />
+        {/*LIGHTS */}
+        <mesh
+          geometry={nodes.Object_40.geometry}
+          material={materials['Material.024']}
+        />
+        <mesh
+          geometry={nodes.Object_41.geometry}
+          material={materials['Material.037']}
+        />
+        <mesh
+          geometry={nodes.Object_42.geometry}
+          material={materials['Material.043']}
+        />
+        <mesh
+          geometry={nodes.Object_43.geometry}
+          material={materials['Material.043']}
+        />
+        <mesh
+          geometry={nodes.Object_44.geometry}
+          material={materials['Material.042']}
+        />
+        <mesh
+          geometry={nodes.Object_45.geometry}
+          material={materials['Material.044']}
         />
       </group>
     </group>
   );
 };
 
-useGLTF.preload("/models/nissan.glb");
+useGLTF.preload('/models/nissan-car.glb');

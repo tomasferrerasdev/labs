@@ -1,10 +1,10 @@
-import { useLoader } from "@react-three/fiber";
-import { EffectComposer, SSR, Bloom, LUT } from "@react-three/postprocessing";
-import { useControls } from "leva";
-import { LUTCubeLoader } from "postprocessing";
+import { useLoader } from '@react-three/fiber';
+import { Bloom, EffectComposer, LUT, SSR } from '@react-three/postprocessing';
+import { useControls } from 'leva';
+import { LUTCubeLoader } from 'postprocessing';
 
 export function Effects() {
-  const texture: any = useLoader(LUTCubeLoader, "/textures/F-6800-STD.cube");
+  const texture: any = useLoader(LUTCubeLoader, '/textures/F-6800-STD.cube');
   const { enabled, ...props } = useControls({
     enabled: false,
   });

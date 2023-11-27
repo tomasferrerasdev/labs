@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
     "@react-three/postprocessing": "^2.15.11",
+    "lamina": "^1.1.23",
     "leva": "^0.9.35",
     "next": "14.0.3",
     "r3f-perf": "^7.1.2",
